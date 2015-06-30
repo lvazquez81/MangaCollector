@@ -1,7 +1,0 @@
-C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector.Tests\obj\Debug\MangaCollector.Tests.csprojResolveAssemblyReference.cache
-C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector.Tests\bin\Debug\MangaCollector.Tests.dll
-C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector.Tests\bin\Debug\MangaCollector.Tests.pdb
-C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector.Tests\bin\Debug\MangaCollector.exe
-C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector.Tests\bin\Debug\MangaCollector.pdb
-C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector.Tests\obj\Debug\MangaCollector.Tests.dll
-C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector.Tests\obj\Debug\MangaCollector.Tests.pdb
