@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IFileManager.cs" />
     <Compile Include="IMangaCollector.cs" />
     <Compile Include="MangaCollector.cs" />
     <Compile Include="Program.cs" />
