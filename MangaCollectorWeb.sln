@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaCollectorWeb", "MangaCollectorWeb\MangaCollectorWeb.csproj", "{E5DB8970-AA18-488A-869D-0DBC0172BF79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaCollector", "MangaCollector\MangaCollector.csproj", "{E3ACFF7A-9DC1-4161-9A5A-951940A04F05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaCollector.Tests", "MangaCollector.Tests\MangaCollector.Tests.csproj", "{6A5B1859-3D59-4113-9CB8-7996EE00CC70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{E5DB8970-AA18-488A-869D-0DBC0172BF79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5DB8970-AA18-488A-869D-0DBC0172BF79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5DB8970-AA18-488A-869D-0DBC0172BF79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3ACFF7A-9DC1-4161-9A5A-951940A04F05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3ACFF7A-9DC1-4161-9A5A-951940A04F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3ACFF7A-9DC1-4161-9A5A-951940A04F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3ACFF7A-9DC1-4161-9A5A-951940A04F05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A5B1859-3D59-4113-9CB8-7996EE00CC70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A5B1859-3D59-4113-9CB8-7996EE00CC70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A5B1859-3D59-4113-9CB8-7996EE00CC70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A5B1859-3D59-4113-9CB8-7996EE00CC70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

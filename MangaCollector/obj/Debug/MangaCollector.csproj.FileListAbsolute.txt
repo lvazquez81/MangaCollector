@@ -1,0 +1,6 @@
+C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector\bin\Debug\MangaCollector.exe.config
+C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector\bin\Debug\MangaCollector.exe
+C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector\bin\Debug\MangaCollector.pdb
+C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector\obj\Debug\MangaCollector.csprojResolveAssemblyReference.cache
+C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector\obj\Debug\MangaCollector.exe
+C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector\obj\Debug\MangaCollector.pdb
