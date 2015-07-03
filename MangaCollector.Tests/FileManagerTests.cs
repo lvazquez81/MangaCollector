@@ -14,10 +14,11 @@ namespace MangaCollector.Tests
         private const string DIRECTORY_EMPTY = @"C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector.SampleFiles\EmptyDirectory";
         private const string DIRECTORY_INVALID = @"foo";
 
+        #region Reading file list
         [TestMethod]
         public void FileManager_WhenProvidingDirectory_ReturnsFileList()
         {
-            IFileManager mgr = new FileManager();
+            IFileReader mgr = new FileReader();
             IList<string> files = mgr.GetFileList(DIRECTORY_SIMPLE);
 
             Assert.IsNotNull(files);
@@ -28,7 +29,7 @@ namespace MangaCollector.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void FileManager_WhenUsingInvalidDirectory_ThrowsError()
         {
-            IFileManager mgr = new FileManager();
+            IFileReader mgr = new FileReader();
             IList<string> files = mgr.GetFileList(DIRECTORY_INVALID);
 
             Assert.IsNotNull(files);
@@ -38,24 +39,15 @@ namespace MangaCollector.Tests
         [TestMethod]
         public void FileManager_WhenUsingEmptyDirectory_ReturnsEmptyList()
         {
-            IFileManager mgr = new FileManager();
+            IFileReader mgr = new FileReader();
             IList<string> files = mgr.GetFileList(DIRECTORY_EMPTY);
 
             Assert.IsNotNull(files);
             Assert.AreEqual(0, files.Count);
         }
+        #endregion
 
-        [TestMethod]
-        public void FileManager_WhenProvidingFiles_ReturnsHashCollection()
-        {
-            IFileManager mgr = new FileManager();
-            IList<string> files = mgr.GetFileList(DIRECTORY_SIMPLE);
-            IList<FileHash> hashCollection = mgr.ReadHash(files);
 
-            Assert.IsNotNull(hashCollection);
-            Assert.IsTrue(hashCollection.Count > 0);
-            CollectionAssert.AllItemsAreNotNull(hashCollection.ToList());
 
-        }
     }
 }

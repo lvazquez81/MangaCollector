@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileHash.cs" />
     <Compile Include="FileManager.cs" />
+    <Compile Include="HashCalculator.cs" />
     <Compile Include="IFileManager.cs" />
     <Compile Include="IMangaCollector.cs" />
     <Compile Include="MangaCollector.cs" />

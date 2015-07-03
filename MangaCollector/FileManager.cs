@@ -8,20 +8,18 @@ using System.Threading.Tasks;
 
 namespace MangaCollector
 {
-    public class FileManager : IFileManager
+    public class FileManager
     {
-        public IList<string> GetFileList(string directoryPath)
+        private readonly IFileReader _fileReader;
+        private readonly IHashCalculator _hashCalc;
+
+        public FileManager(IFileReader fileReader)
         {
-            if (string.IsNullOrWhiteSpace(directoryPath))
-                throw new ArgumentNullException("Provided directory path is null.");
-            
-            if (!Directory.Exists(directoryPath))
-                throw new ArgumentException("Provided directory was not found:" + directoryPath);
-
-            return Directory.GetFiles(directoryPath);
+            _fileReader = fileReader;
+            _hashCalc = new QuickHashCalculator(fileReader);
         }
-
-        public IList<FileHash> ReadHash(IList<string> filePaths)
+        
+        public IList<FileHash> GetFileHash(IList<string> filePaths)
         {
             if (filePaths == null) throw new ArgumentNullException("Provided file list is null.");
             if (filePaths.Count == 0) return new List<FileHash>();
@@ -40,17 +38,10 @@ namespace MangaCollector
 
         private FileHash processHash(string file)
         {
-            if (string.IsNullOrWhiteSpace(file))
-                throw new ArgumentNullException("Provided file path is null.");
-
-            if (!File.Exists(file))
-                throw new ArgumentException("Provided file was not found:" + file);
-
-            FileInfo info = new FileInfo(file);
-
-            const int bytesToRead = 8;
-            byte[] fileContent = readFile(info.FullName, bytesToRead);
-            string hash = calculateMD5Hash(fileContent);           
+            const int BYTES_TO_READ = 8;
+            byte[] fileContent = _fileReader.ReadFile(file, BYTES_TO_READ);
+            string hash = _hashCalc.CalculateHash(file);
+            FileInfo info = _fileReader.GetFileInfo(file);
 
             return new FileHash()
             {
@@ -58,7 +49,7 @@ namespace MangaCollector
                 Filepath = info.FullName,
                 Hash = hash,
                 HashDate = DateTime.Now,
-                HashDepth = bytesToRead
+                HashDepth = BYTES_TO_READ
             };
         }
 
