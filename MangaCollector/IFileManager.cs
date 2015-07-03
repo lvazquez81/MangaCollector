@@ -9,6 +9,15 @@ namespace MangaCollector
     public interface IFileManager
     {
         IList<string> GetFileList(string directoryPath);
-        IList<object> ReadHash(List<string> filePaths);
+        IList<FileHash> ReadHash(IList<string> filePaths);
+    }
+
+    public class FileHash
+    {
+        public string Filename { get; set; }
+        public string Filepath { get; set; }
+        public string Hash { get; set; }
+        public DateTime HashDate { get; set; }
+        public int HashDepth { get; set; }
     }
 }
