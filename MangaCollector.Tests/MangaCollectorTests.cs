@@ -24,7 +24,8 @@ namespace MangaCollector.Tests
             IMangaCollector m = new MangaCollector();
             IList<string> files = m.ReadDirectory(@"C:\Users\LuisAlberto\Desktop");
 
-            
+            Assert.IsNotNull(files);
+            CollectionAssert.AllItemsAreNotNull(files.ToList());
         }
     }
 }

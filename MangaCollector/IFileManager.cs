@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace MangaCollector
 {
-    public class IFileManager
+    public interface IFileManager
     {
-        IEnumerator<string> GetFiles(string directoryPath);
+        IList<string> GetFileList(string directoryPath);
+        IList<object> ReadHash(List<string> filePaths);
     }
 }
