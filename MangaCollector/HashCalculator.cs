@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MangaCollector
 {
@@ -16,16 +11,16 @@ namespace MangaCollector
     public class QuickHashCalculator : IHashCalculator
     {
         private const int BYTES_TO_READ = 8;
-        private readonly IFileReader _fileReader;
+        private readonly IFileSystem _fileReader;
 
-        public QuickHashCalculator(IFileReader fileReader)
+        public QuickHashCalculator(IFileSystem fileReader)
         {
             _fileReader = fileReader;
         }
 
         public string CalculateHash(string filePath)
         {
-            byte[] fileContent = _fileReader.ReadFile(filePath, BYTES_TO_READ);
+            byte[] fileContent = _fileReader.GetFileData(filePath, BYTES_TO_READ);
             return calculateMD5Hash(fileContent);
         }
 

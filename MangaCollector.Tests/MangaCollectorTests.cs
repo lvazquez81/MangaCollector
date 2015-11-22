@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace MangaCollector.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class MangaCollectorTests
     {
-        [TestMethod]
+        [Test]
         public void WhenInitializing_WithCurrentDirectory_ReturnsFileList()
         {
             IMangaCollector m = new MangaCollector();
@@ -18,7 +18,7 @@ namespace MangaCollector.Tests
             CollectionAssert.AllItemsAreNotNull(files.ToList());
         }
 
-        [TestMethod]
+        [Test]
         public void WhenReadingDirectory_WithMangaFiles_ReturnsMetaTags()
         {
             IMangaCollector m = new MangaCollector();

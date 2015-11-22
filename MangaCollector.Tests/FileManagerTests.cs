@@ -1,53 +1,32 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using Moq;
+using NUnit.Framework;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MangaCollector.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class FileManagerTests
     {
-        private const string DIRECTORY_SIMPLE = @"C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector.SampleFiles\SimpleDirectory";
-        private const string DIRECTORY_EMPTY = @"C:\Users\LuisAlberto\Documents\Proyects\MangaCollector\MangaCollector.SampleFiles\EmptyDirectory";
-        private const string DIRECTORY_INVALID = @"foo";
-
-        #region Reading file list
-        [TestMethod]
+        [Test]
         public void FileManager_WhenProvidingDirectory_ReturnsFileList()
         {
-            IFileReader mgr = new FileReader();
-            IList<string> files = mgr.GetFileList(DIRECTORY_SIMPLE);
+            var mockedFileSystem = new Mock<IFileSystem>();
+            var mgr = new FileManager(mockedFileSystem.Object);
 
-            Assert.IsNotNull(files);
-            CollectionAssert.AllItemsAreNotNull(files.ToList());
+            mockedFileSystem.Setup(x => x.GetFilesFromDirectory(It.IsAny<string>()))
+                .Returns(new List<string>
+                {
+                    "file1.zip",
+                    "file2.zip",
+                    "file3.zip"
+                });
+
+            IList<string> files = mgr.EnlistFilesByDirectory("fooPath");
+
+            CollectionAssert.Contains(files,"file1.zip");
+            CollectionAssert.Contains(files, "file2.zip");
+            CollectionAssert.Contains(files, "file3.zip");
+
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void FileManager_WhenUsingInvalidDirectory_ThrowsError()
-        {
-            IFileReader mgr = new FileReader();
-            IList<string> files = mgr.GetFileList(DIRECTORY_INVALID);
-
-            Assert.IsNotNull(files);
-            CollectionAssert.AllItemsAreNotNull(files.ToList());
-        }
-
-        [TestMethod]
-        public void FileManager_WhenUsingEmptyDirectory_ReturnsEmptyList()
-        {
-            IFileReader mgr = new FileReader();
-            IList<string> files = mgr.GetFileList(DIRECTORY_EMPTY);
-
-            Assert.IsNotNull(files);
-            Assert.AreEqual(0, files.Count);
-        }
-        #endregion
-
-
-
     }
 }

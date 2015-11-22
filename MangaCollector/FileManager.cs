@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MangaCollector
 {
     public class FileManager
     {
-        private readonly IFileReader _fileReader;
+        private readonly IFileSystem _fileReader;
         private readonly IHashCalculator _hashCalc;
 
-        public FileManager(IFileReader fileReader)
+        public FileManager(IFileSystem fileReader)
         {
             _fileReader = fileReader;
             _hashCalc = new QuickHashCalculator(fileReader);
@@ -36,17 +34,20 @@ namespace MangaCollector
 
         }
 
+        public IList<string> EnlistFilesByDirectory(string v)
+        {
+            throw new NotImplementedException();
+        }
+
         private FileHash processHash(string file)
         {
             const int BYTES_TO_READ = 8;
-            byte[] fileContent = _fileReader.ReadFile(file, BYTES_TO_READ);
+            byte[] fileContent = _fileReader.GetFileData(file, BYTES_TO_READ);
             string hash = _hashCalc.CalculateHash(file);
-            FileInfo info = _fileReader.GetFileInfo(file);
 
             return new FileHash()
             {
-                Filename = info.Name,
-                Filepath = info.FullName,
+                Filename = file,
                 Hash = hash,
                 HashDate = DateTime.Now,
                 HashDepth = BYTES_TO_READ

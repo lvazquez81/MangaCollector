@@ -44,7 +44,8 @@
     <Compile Include="FileHash.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="HashCalculator.cs" />
-    <Compile Include="IFileManager.cs" />
+    <Compile Include="WindowsFileSystem.cs" />
+    <Compile Include="IFileSystem.cs" />
     <Compile Include="IMangaCollector.cs" />
     <Compile Include="MangaCollector.cs" />
     <Compile Include="Program.cs" />
@@ -52,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
