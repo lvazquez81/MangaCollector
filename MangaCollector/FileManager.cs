@@ -8,15 +8,15 @@ namespace MangaCollector
 {
     public class FileManager
     {
-        private readonly IFileSystem _fileReader;
+        private readonly IFileSystem _fileSystem;
         private readonly IHashCalculator _hashCalc;
 
-        public FileManager(IFileSystem fileReader)
+        public FileManager(IFileSystem fileSystem)
         {
-            _fileReader = fileReader;
-            _hashCalc = new QuickHashCalculator(fileReader);
+            _fileSystem = fileSystem;
+            _hashCalc = new QuickHashCalculator(fileSystem);
         }
-        
+
         public IList<FileHash> GetFileHash(IList<string> filePaths)
         {
             if (filePaths == null) throw new ArgumentNullException("Provided file list is null.");
@@ -34,15 +34,22 @@ namespace MangaCollector
 
         }
 
-        public IList<string> EnlistFilesByDirectory(string v)
+        public IList<string> EnlistFilesByDirectory(string directoryPath)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _fileSystem.GetFilesFromDirectory(directoryPath);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to list files. Error: " + ex.Message, ex);
+            }
         }
 
         private FileHash processHash(string file)
         {
             const int BYTES_TO_READ = 8;
-            byte[] fileContent = _fileReader.GetFileData(file, BYTES_TO_READ);
+            byte[] fileContent = _fileSystem.GetFileData(file, BYTES_TO_READ);
             string hash = _hashCalc.CalculateHash(file);
 
             return new FileHash()
